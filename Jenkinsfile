@@ -5,7 +5,7 @@ pipeline {
         stage('Build & Tag Docker Image') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                         sh "docker build -t pavanprsn/adservice:latest ."
                     }
                 }
@@ -15,7 +15,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                         sh "docker push pavanprsn/adservice:latest "
                     }
                 }
